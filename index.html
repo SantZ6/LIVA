@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LIVA · Cocina Adaptativa</title>
+<meta name="description" content="LIVA: utensilios de cocina inclusivos. Adaptación que se siente natural.">
+<link rel="icon" href="assets/isotipo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;500;700;800&family=Atkinson+Hyperlegible:wght@400;700&family=Libre+Franklin:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--marfil:#F8F7F1;--petroleo:#155B63;--terracota:#C36F52;--salvia:#9EB8A6;--grisazul:#6B8EA0;--texto:#1d2b2d;
+--t:'Alegreya Sans','Trebuchet MS',sans-serif;--c:'Libre Franklin',Arial,sans-serif;--b:'Atkinson Hyperlegible',Verdana,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--marfil);color:var(--texto);font:18px/1.6 var(--b)}
+img{max-width:100%}a{color:var(--petroleo)}
+:focus-visible{outline:3px solid var(--terracota);outline-offset:3px}
+.skip{position:absolute;left:-999px}.skip:focus{left:8px;top:8px;background:#fff;padding:8px;z-index:99}
+h1,h2,h3{font-family:var(--t);color:var(--petroleo);line-height:1.1;margin:0 0 .5em}
+h1{font-size:clamp(2.4rem,6vw,4rem);font-weight:800}h2{font-size:clamp(1.9rem,4vw,2.6rem);font-weight:800}h3{font-size:1.4rem;font-weight:700}
+.wrap{max-width:1100px;margin:auto;padding:0 20px}section{padding:72px 0}
+.sub{font-family:var(--c);color:var(--grisazul);letter-spacing:.14em;text-transform:uppercase;font-size:.8rem;font-weight:600;margin:0 0 8px;color:#41667a}
+header{position:sticky;top:0;z-index:10;background:rgba(248,247,241,.95);backdrop-filter:blur(6px);border-bottom:1px solid #e3e1d6}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}
+.bar img{height:40px;display:block}
+nav{display:flex;gap:22px;align-items:center}nav a{font-family:var(--c);font-size:.95rem;text-decoration:none;color:var(--petroleo);font-weight:600}
+nav a:hover{text-decoration:underline}
+.btn{display:inline-block;font-family:var(--c);font-weight:600;font-size:1rem;background:var(--petroleo);color:#fff;border:2px solid var(--petroleo);padding:12px 22px;border-radius:999px;text-decoration:none;cursor:pointer}
+.btn:hover{background:#0f4249}.btn.o{background:transparent;color:var(--petroleo)}.btn.o:hover{background:#e6eeea}
+.btn[aria-disabled=true]{opacity:.55;pointer-events:none}
+#menu{display:none;background:none;border:2px solid var(--petroleo);border-radius:8px;padding:6px 10px;font-size:1.2rem;color:var(--petroleo)}
+.hero{position:relative;overflow:hidden;background:var(--petroleo);color:var(--marfil)}
+.hero:before{content:"";position:absolute;inset:0;background:url(assets/isotipo-claro.png) 0 0/120px auto;opacity:.05}
+.hero:after{content:"";position:absolute;left:-140px;bottom:-160px;width:380px;height:380px;border-radius:50%;background:var(--salvia);opacity:.35}
+.hero h1,.hero .sub{color:var(--marfil)}.hero .sub{opacity:.9}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center}
+.hero p{max-width:34em;font-size:1.15rem}.hero .acc{color:var(--salvia)}
+.hero .iso{width:min(300px,70%);justify-self:center}
+.hero .btn{background:var(--marfil);color:var(--petroleo);border-color:var(--marfil)}.hero .btn:hover{background:#fff}
+.hero .btn.o{background:transparent;color:var(--marfil)}.hero .btn.o:hover{background:rgba(248,247,241,.15)}
+.acts{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.card{background:#fff;border:1px solid #e3e1d6;border-radius:20px;padding:24px}
+.pil .n{font-family:var(--t);font-size:2.4rem;font-weight:800;color:var(--terracota);line-height:1}
+.val{background:var(--petroleo);color:var(--marfil);border-radius:24px;padding:32px;margin-top:28px}
+.val h3{color:#fff}.val p{margin:.3em 0 0}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 26px}
+.chip{font-family:var(--c);font-weight:600;font-size:.95rem;border:2px solid var(--petroleo);background:transparent;color:var(--petroleo);border-radius:999px;padding:8px 16px;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--petroleo);color:#fff}
+.prod{display:flex;flex-direction:column;gap:10px}
+.ph{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:14px;display:block;background:#e3e1d6}
+#prods{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}.prod h3,.prod p{margin:0}
+.tag{font-family:var(--c);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:#41667a;font-weight:600}
+.prod .btn{margin-top:auto;text-align:center;padding:10px 16px}
+.note{font-size:.9rem;color:#4a5b5d;margin-top:18px}
+.docs .card{display:flex;flex-direction:column;gap:10px}.docs .ic{font-size:2rem}
+.docs .acts{margin-top:auto;padding-top:10px}
+.viewer{margin-top:24px}.viewer iframe{width:100%;height:70vh;border:1px solid #cfd8d3;border-radius:12px;background:#fff}
+.contact{background:#eef2ee}.contact ul{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:8px}
+footer{background:var(--petroleo);color:var(--marfil);padding:44px 0 28px;font-size:.95rem}
+footer img{height:56px}footer a{color:#fff}footer p{margin:.4em 0}
+.wa{position:fixed;right:18px;bottom:18px;z-index:20;background:var(--petroleo);color:#fff;border:3px solid #fff;border-radius:999px;padding:12px 20px;font-family:var(--c);font-weight:600;text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+@media(max-width:760px){
+ nav{display:none;position:absolute;top:68px;left:0;right:0;background:var(--marfil);flex-direction:column;padding:16px 20px;border-bottom:1px solid #e3e1d6;align-items:flex-start}
+ nav.on{display:flex}#menu{display:block}.hero .wrap{grid-template-columns:1fr}.hero .iso{display:none}section{padding:52px 0}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<a class="skip" href="#catalogo">Saltar al contenido</a>
+<header><div class="wrap bar">
+ <a href="#inicio" aria-label="LIVA, inicio"><img src="assets/logo.png" alt="LIVA Cocina Adaptativa"></a>
+ <button id="menu" aria-expanded="false" aria-controls="nav" aria-label="Abrir menú">☰</button>
+ <nav id="nav" aria-label="Principal">
+  <a href="#mentalidad">Mentalidad</a><a href="#catalogo">Catálogo</a><a href="#documentos">Documentos</a><a href="#contacto">Contacto</a>
+  <a class="btn" data-wa href="#" target="_blank" rel="noopener">WhatsApp</a>
+ </nav>
+</div></header>
+
+<main>
+<section class="hero" id="inicio"><div class="wrap">
+ <div>
+  <p class="sub">Cocina adaptativa</p>
+  <h1>Cocina adaptativa para todas las <span class="acc">formas de ser</span>.</h1>
+  <p>LIVA propone utensilios de cocina inclusivos que se adaptan a la persona y no al revés: adaptación que se siente natural.</p>
+  <div class="acts"><a class="btn" href="#catalogo">Explorar colección →</a><a class="btn o" data-wa href="#" target="_blank" rel="noopener">Escribir por WhatsApp</a></div>
+ </div>
+ <img class="iso" src="assets/isotipo-claro.png" alt="Isotipo de LIVA: una V que abre los brazos con un punto terracota">
+</div></section>
+
+<section id="mentalidad"><div class="wrap">
+ <p class="sub">Nuestra mentalidad</p><h2>Adaptación que se siente natural</h2>
+ <p style="max-width:44em">Los utensilios convencionales no contemplan las distintas formas de manipular, percibir y comprender una actividad cotidiana como cocinar. LIVA adapta el objeto a la persona.</p>
+ <div class="grid pil" style="margin-top:24px">
+  <div class="card"><div class="n">01</div><h3>Autonomía</h3><p>Cocinar con menos dependencia de terceros y con seguridad.</p></div>
+  <div class="card"><div class="n">02</div><h3>Pertenencia</h3><p>Que la adaptación no sea el centro de la experiencia ni estigmatice.</p></div>
+  <div class="card"><div class="n">03</div><h3>Naturalidad</h3><p>Ergonomía invisible, integrada en objetos cotidianos y cálidos.</p></div>
+ </div>
+ <div class="val"><h3>Persona · Objeto · Experiencia</h3>
+  <p>La persona no necesita adaptarse al objeto. El objeto se adapta a diferentes formas de uso. La adaptación se integra a la vida cotidiana.</p></div>
+</div></section>
+
+<section id="catalogo" style="background:#fff"><div class="wrap">
+ <p class="sub">Catálogo</p><h2>Colección LIVA</h2>
+ <div class="chips" role="group" aria-label="Filtrar por categoría" id="chips"></div>
+ <div class="grid" id="prods" aria-live="polite"></div>
+ <p class="note">Catálogo conceptual de una propuesta de marca académica: imágenes y piezas referenciales, sin precios ni venta directa. Escríbenos para conversar sobre cada categoría.</p>
+</div></section>
+
+<section id="documentos" class="docs"><div class="wrap">
+ <p class="sub">Documentos</p><h2>Documentación del proyecto</h2>
+ <div class="grid" id="docgrid"></div>
+ <div class="viewer" id="viewer" hidden></div>
+</div></section>
+
+<section id="contacto" class="contact"><div class="wrap">
+ <p class="sub">Contacto</p><h2>Hablemos</h2>
+ <p>Cuéntanos qué necesitas para cocinar con más autonomía y te orientamos.</p>
+ <div class="acts"><a class="btn" data-wa href="#" target="_blank" rel="noopener">Escribir por WhatsApp</a></div>
+ <ul>
+  <li>Correo: <a href="mailto:Livaseadapta@gmail.com">Livaseadapta@gmail.com</a></li>
+  <li>Teléfono: <a href="tel:+573123654972">312 365 4972</a></li>
+  <li>Instagram: <a href="https://www.instagram.com/Liva_cocina_adaptativa" target="_blank" rel="noopener">@Liva_cocina_adaptativa</a></li>
+ </ul>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+ <img src="assets/logo-claro.png" alt="LIVA Cocina Adaptativa">
+ <p>Autonomía · Pertenencia · Naturalidad</p>
+ <p>Propuesta de marca desarrollada en Marketing en Diseño, Programa de Diseño Industrial, Politécnico Grancolombiano, Bogotá D.C. Autora: E.D.I. Luz Andrea Merchán González.</p>
+ <p>Prohibida la reproducción sin autorización de los titulares de la propiedad intelectual.</p>
+</div></footer>
+<a class="wa" data-wa href="#" target="_blank" rel="noopener" aria-label="Escribir a LIVA por WhatsApp">WhatsApp</a>
+
+<script>
+/* ===== CONFIGURACIÓN: lo único que tienes que editar ===== */
+const WA = "573123654972"; // 57 + número. Verifica que sea el WhatsApp real.
+const DOCS = [
+ {icono:"📄", titulo:"Documentación (PDF)", desc:"Bitácora de desarrollo estratégico de marca.", url:"", tipo:"pdf"},
+ {icono:"📊", titulo:"Hoja de cálculo (Excel)", desc:"Datos y matrices de apoyo del proyecto.", url:"", tipo:"excel"},
+ {icono:"📑", titulo:"Segundo documento (PDF)", desc:"Documento complementario.", url:"", tipo:"pdf"}
+]; // url: enlace público (p. ej. Google Drive "Cualquier persona con el enlace")
+/* ========================================================== */
+/* FOTOS: cada categoría usa assets/<nombre>.jpg. Para cambiar una foto a mano, reemplaza ese archivo
+   (mismo nombre) o cambia la ruta en "img". Proporción recomendada 3:2 (ej. 900x600 px). */
+const CATS = {
+ "Corte":{img:"assets/corte.jpg",alt:"Cuchillo, pelador y protector de dedos LIVA en tonos salvia, marfil y petróleo",d:"Piezas de corte con agarre pensado para distintas formas de sostener."},
+ "Cocción":{img:"assets/coccion.jpg",alt:"Cucharón, espátula, espumadera, cuchara de pasta, paleta y pinzas LIVA",d:"Utensilios para cocinar con control, estabilidad y seguridad."},
+ "Preparación":{img:"assets/preparacion.jpg",alt:"Batidor, cuchara, espátula, medidores, exprimidor y rodaja LIVA",d:"Para mezclar, medir y preparar con agarres cómodos y legibles."},
+ "Tablas":{img:"assets/tablas.jpg",alt:"Cuatro tablas de cortar LIVA en petróleo, marfil, salvia y redonda",d:"Superficies de apoyo estables, de colores contrastados."},
+ "Sets":{img:"assets/sets.jpg",alt:"Set LIVA con utensilios en soporte, tablas, medidores, pelador y cuchillo",d:"Combinaciones de piezas para empezar a cocinar con autonomía."}
+};
+const waURL = t => `https://wa.me/${WA}?text=${encodeURIComponent(t||"Hola LIVA, quiero más información.")}`;
+document.querySelectorAll("[data-wa]").forEach(a=>a.href=waURL());
+
+/* Catálogo */
+const chips=document.getElementById("chips"), prods=document.getElementById("prods");
+let filtro="Todos";
+function pintar(){
+ chips.innerHTML=["Todos",...Object.keys(CATS)].map(k=>`<button class="chip" aria-pressed="${k===filtro}" data-k="${k}">${k}</button>`).join("");
+ prods.innerHTML=Object.entries(CATS).filter(([k])=>filtro==="Todos"||k===filtro).map(([k,v])=>
+  `<article class="card prod"><img class="ph" src="${v.img}" alt="${v.alt}" loading="lazy" width="900" height="600">
+   <span class="tag">Categoría</span><h3>${k}</h3><p>${v.d}</p>
+   <a class="btn o" target="_blank" rel="noopener" href="${waURL("Hola LIVA, me interesa la categoría "+k+".")}">Consultar por WhatsApp</a></article>`).join("");
+}
+chips.addEventListener("click",e=>{const b=e.target.closest("button");if(b){filtro=b.dataset.k;pintar();chips.querySelector(`[data-k="${filtro}"]`).focus();}});
+pintar();
+
+/* Documentos */
+const g=document.getElementById("docgrid"), vw=document.getElementById("viewer");
+g.innerHTML=DOCS.map((d,i)=>{
+ const ok=!!d.url;
+ return `<article class="card"><div class="ic" aria-hidden="true">${d.icono}</div><h3>${d.titulo}</h3><p>${d.desc}</p>
+ ${ok?"":'<p class="tag">Disponible próximamente</p>'}
+ <div class="acts">
+  <a class="btn" ${ok?`href="${d.url}" target="_blank" rel="noopener"`:'href="#" aria-disabled="true"'}>${d.tipo==="excel"?"Abrir":"Ver"}</a>
+  ${d.tipo==="pdf"&&ok?`<button class="btn o" data-i="${i}">Ver aquí</button>`:""}
+ </div></article>`}).join("");
+g.addEventListener("click",e=>{const b=e.target.closest("button[data-i]");if(!b)return;
+ const d=DOCS[b.dataset.i]; vw.hidden=false;
+ vw.innerHTML=`<h3>${d.titulo}</h3><iframe title="${d.titulo}" src="${d.url}"></iframe><p class="note">Si no se ve bien en tu celular, usa el botón “Ver” para abrirlo en otra pestaña.</p>`;
+ vw.scrollIntoView({behavior:"smooth"});});
+
+/* Menú móvil */
+const m=document.getElementById("menu"), n=document.getElementById("nav");
+m.onclick=()=>{const o=n.classList.toggle("on");m.setAttribute("aria-expanded",o)};
+n.addEventListener("click",e=>{if(e.target.tagName==="A"){n.classList.remove("on");m.setAttribute("aria-expanded","false")}});
+</script>
+</body>
+</html>
